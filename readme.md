@@ -15,3 +15,16 @@
    - the container will shut down after the init
    - You can run it again to add dependencies to the package.json file and install them in the local bind mount
    - `docker run -it -v $(pwd):/app util-test install express --save`
+
+# How to use with compose
+
+* Instead of using the long docker commands we can make use of docker compose
+* In the compose file notice the 
+   ```
+    stdin_open: true
+    tty: true
+   ```
+* Also we can't just use `docker-compose up` as we wanna pass parameters. 
+   - Instead we do 
+   - `docker-compose run npmsrv init`
+   - Use rm to clean up the container `docker-compose --rm run npmsrv init`
